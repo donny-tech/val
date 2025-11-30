@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f3f6fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0b5cff;
+      --nav:#0f1724;
+      --sidebar:#0b2540;
+      --glass: rgba(255,255,255,0.6);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:var(--bg); color:#111}
+
+    /* Layout */
+    .app{
+      max-width:1200px;
+      margin:32px auto;
+      display:grid;
+      grid-template-columns:240px 1fr 260px;
+      gap:20px;
+      align-items:start;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      background:linear-gradient(180deg,var(--sidebar),#092139);
+      color:#dbeafe;
+      border-radius:var(--radius);
+      padding:20px;
+      height:720px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .brand{font-weight:700; font-size:18px; margin-bottom:18px}
+    .nav{display:flex;flex-direction:column; gap:12px}
+    .nav a{display:flex;align-items:center;gap:12px;padding:10px;border-radius:9px;color:inherit;text-decoration:none;opacity:0.95}
+    .nav a.active, .nav a:hover{background:rgba(255,255,255,0.06)}
+    .nav a .ico{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,0.03);display:inline-grid;place-items:center}
+
+    /* Main area */
+    .main{
+      background:transparent;
+      border-radius:var(--radius);
+      padding:18px 8px 8px 8px;
+      min-height:720px;
+    }
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));border-radius:12px;
+      box-shadow: 0 6px 18px rgba(11,37,64,0.06);
+    }
+    .search{display:flex;gap:12px;align-items:center}
+    .search input{padding:10px 14px;border-radius:10px;border:1px solid #e6edf6;min-width:360px;background:transparent}
+    .filters{display:flex;gap:8px}
+    .btn{padding:8px 12px;border-radius:8px;background:var(--accent);color:white;font-weight:600;border:none}
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:12px;
+      box-shadow:0 6px 16px rgba(16,24,40,0.04);
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .card img{width:72px;height:96px;object-fit:cover;border-radius:6px}
+    .meta{flex:1}
+    .meta h4{margin:0 0 6px 0;font-size:15px}
+    .meta p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Right column */
+    .right{
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+      border-radius:var(--radius);
+      padding:16px;
+      height:720px;
+      box-shadow:0 6px 18px rgba(11,37,64,0.04);
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .profile{display:flex;align-items:center;gap:12px}
+    .avatar{width:56px;height:56px;border-radius:12px;overflow:hidden;background:#e6eefc;display:inline-grid;place-items:center;font-weight:700}
+    .small-card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 4px 10px rgba(2,6,23,0.03)}
+
+    /* pagination */
+    .pagination{display:flex;gap:8px;align-items:center;color:var(--muted);margin-top:12px}
+    .page{padding:8px 10px;border-radius:8px;background:transparent;border:1px solid #eef4ff}
+
+   
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">Library</div>
+        <nav class="nav">
+          <a class=""><span class="ico">🔙</span> <span>Home</span></a>
+          <a class="active"><span class="ico">📚</span> <span>Books</span></a>
+          <a><span class="ico">🗂</span> <span>Caterory</span></a>
+          <a><span class="ico">➕</span> <span>Bookspoket </span></a>
+          <a><span class="ico">⚙</span> <span>Settings</span></a>
+        </nav>
+      </div>
+      <div style="font-size:13px;opacity:0.9">© copyrigth 2025</div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div style="display:flex;align-items:center;gap:16px">
+          <h2 style="margin:0">Books</h2>
+          <div class="search">
+            <input placeholder="Rechercher un livre, un auteur..." />
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="filters">
+            <a href="button" class="btn">Search</button></a>
+            <button class="page">Grille</button>
+        
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- Exemple de cartes de livre (répéter) -->
+        <div class="card">
+          <img src="c:\Users\DONNY\Desktop\librarie\istockphoto-2172217205-612x612.jpg" alt="cover">
+          <div class="meta">
+            <h4>Le Bon Livre</h4>
+            <p>Auteur: merlin. 2020</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="c:\Users\DONNY\Desktop\librarie\istockphoto-2045493724-612x612.jpg" alt="cover">
+          <div class="meta">
+            <h4>Chemins de la Foi</h4>
+            <p>Édition 2018</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="c:\Users\DONNY\Desktop\librarie\pexels-erik-karits-2093459-10448609.jpg" alt="cover">
+          <div class="meta">
+            <h4>Histoire et Vie</h4>
+            <p>Collection 2019</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="c:\Users\DONNY\Desktop\librarie\romand moderne.jpeg" alt="cover">
+          <div class="meta">
+            <h4>Romans modernes</h4>
+            <p>livre d'histoire</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="d:\video\ethical hacker\istockphoto-2083966639-612x612.jpg" alt="cover">
+          <div class="meta">
+            <h4>Sciences & Vie</h4>
+            <p>Culture et Savoir</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="d:\video\ethical hacker\pexels-kevin-ku-92347-577585 - Copie.jpg" alt="cover">
+          <div class="meta">
+            <h4>Guide pratique</h4>
+            <p>Auteur :joshua osinachi</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pagination">
+        <div class="page">«</div>
+        <div class="page">1</div>
+        <div class="page">2</div>
+        <div class="page">3</div>
+        <div class="page">»</div>
+      </div>
+
+    </main>
+
+    <aside class="right">
+      <div class="profile small-card">
+        <div class="avatar">DV</div>
+        <div>
+          <div style="font-weight:700">Don Valles</div>
+          <div style="font-size:13px;color:var(--muted)">online : 34 online</div>
+          
+        </div>
+      </div>
+
+      <div class="small-card">
+        <div style="font-weight:700;margin-bottom:6px">En cours</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <img src="d:\video\IMG_E4517[1].JPG" style="width:40px;height:56px;border-radius:6px"/>
+            <div style="font-size:13px">Ton prochain livre</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <img src="c:\Users\DONNY\Desktop\librarie\science et vie.jpeg" style="width:40px;height:56px;border-radius:6px"/>
+            <div style="font-size:13px">Lecture recommandée</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="small-card" style="margin-top:auto">
+        <div style="font-weight:700;margin-bottom:6px">Actions rapides</div>
+        <button class="btn" style="width:100%">Importer</button>
+      </div>
+
+    </aside>
+  </div>
+</body>
+</html>
